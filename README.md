@@ -1,36 +1,52 @@
 # gamepass-to-discord
 
-Tracks Xbox Game Pass title changes and posts updates to Discord via webhook embeds.
+Monitors Xbox Game Pass title changes and posts updates straight to Discord using sexy embeds and webhook magic.
 
 ## Setup
 
+Run the install:
+
 npm install
 
-Create a .env file:
+Then drop a `.env` in the root:
 
-DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/your-webhook-url"
+DISCORD_WEBHOOK_URL="your-discord-webhook-url"
 
 ## Usage
+
+Run the pipeline:
 
 ./run.sh
 
 ## Testing
 
+Inject a fake change for sanity check:
+
 ./simulate-test.sh
 
-## Files
+## Structure
 
-- run.sh – executes the workflow
-- simulate-test.sh – injects test data
-- index.js – builds latest game list
-- tracker.js – diffs previous vs current
-- config.json – formatting config
-- data/previous.json – cached data
-- output/latest.json – current game list
-- .env – webhook token (ignored from Git)
+run.sh              → master script, formats + posts
+simulate-test.sh    → spoof a game add/remove
+index.js            → pulls current game list
+tracker.js          → diffs and formats Discord embeds
+config.json         → tweak output rules + images
+data/previous.json  → cached list
+output/latest.json  → fresh list
+.env                → webhook token (ignored from Git)
+
+## Notes
+
+- Splits embeds into 10s to play nice with Discord
+- Posts fallback message if no titles changed
+- Uses webhook from .env — no secrets tracked
 
 ## License
 
 MIT  
-Author: Jiblet
+Author: Jiblet  
+
+## Attribution
+
+Original code source: https://github.com/NikkelM/Game-Pass-API (MIT License)
 
