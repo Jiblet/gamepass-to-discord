@@ -1,0 +1,681 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Game Pass API configuration schema",
+	"description": "Validates configuration input for the Game Pass API script.",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"description": "The JSON schema to use for the configuration file.",
+			"type": "string",
+			"default": "config.schema.json"
+		},
+		"markets": {
+			"description": "The two letter market codes for which to fetch games. The script will run once for each market code.",
+			"type": "array",
+			"default": [
+				"US"
+			],
+			"items": {
+				"type": "string",
+				"enum": [
+					"US",
+					"DZ",
+					"AR",
+					"AU",
+					"AT",
+					"BH",
+					"BD",
+					"BE",
+					"BR",
+					"BG",
+					"CA",
+					"CL",
+					"CN",
+					"CO",
+					"CR",
+					"HR",
+					"CY",
+					"CZ",
+					"DK",
+					"EG",
+					"EE",
+					"FI",
+					"FR",
+					"DE",
+					"GR",
+					"GT",
+					"HK",
+					"HU",
+					"IS",
+					"IN",
+					"ID",
+					"IQ",
+					"IE",
+					"IL",
+					"IT",
+					"JP",
+					"JO",
+					"KZ",
+					"KE",
+					"KW",
+					"LV",
+					"LB",
+					"LI",
+					"LT",
+					"LU",
+					"MY",
+					"MT",
+					"MR",
+					"MX",
+					"MA",
+					"NL",
+					"NZ",
+					"NG",
+					"NO",
+					"OM",
+					"PK",
+					"PE",
+					"PH",
+					"PL",
+					"PT",
+					"QA",
+					"RO",
+					"RU",
+					"SA",
+					"RS",
+					"SG",
+					"SK",
+					"SI",
+					"ZA",
+					"KR",
+					"ES",
+					"SE",
+					"CH",
+					"TW",
+					"TH",
+					"TT",
+					"TN",
+					"TR",
+					"UA",
+					"AE",
+					"GB",
+					"VN",
+					"YE",
+					"LY",
+					"LK",
+					"UY",
+					"VE",
+					"AF",
+					"AX",
+					"AL",
+					"AS",
+					"AO",
+					"AI",
+					"AQ",
+					"AG",
+					"AM",
+					"AW",
+					"BO",
+					"BQ",
+					"BA",
+					"BW",
+					"BV",
+					"IO",
+					"BN",
+					"BF",
+					"BI",
+					"KH",
+					"CM",
+					"CV",
+					"KY",
+					"CF",
+					"TD",
+					"TL",
+					"DJ",
+					"DM",
+					"DO",
+					"EC",
+					"SV",
+					"GQ",
+					"ER",
+					"ET",
+					"FK",
+					"FO",
+					"FJ",
+					"GF",
+					"PF",
+					"TF",
+					"GA",
+					"GM",
+					"GE",
+					"GH",
+					"GI",
+					"GL",
+					"GD",
+					"GP",
+					"GU",
+					"GG",
+					"GN",
+					"GW",
+					"GY",
+					"HT",
+					"HM",
+					"HN",
+					"AZ",
+					"BS",
+					"BB",
+					"BY",
+					"BZ",
+					"BJ",
+					"BM",
+					"BT",
+					"KM",
+					"CG",
+					"CD",
+					"CK",
+					"CX",
+					"CC",
+					"CI",
+					"CW",
+					"JM",
+					"SJ",
+					"JE",
+					"KI",
+					"KG",
+					"LA",
+					"LS",
+					"LR",
+					"MO",
+					"MK",
+					"MG",
+					"MW",
+					"IM",
+					"MH",
+					"MQ",
+					"MU",
+					"YT",
+					"FM",
+					"MD",
+					"MN",
+					"MS",
+					"MZ",
+					"MM",
+					"NA",
+					"NR",
+					"NP",
+					"MV",
+					"ML",
+					"NC",
+					"NI",
+					"NE",
+					"NU",
+					"NF",
+					"PW",
+					"PS",
+					"PA",
+					"PG",
+					"PY",
+					"RE",
+					"RW",
+					"BL",
+					"MF",
+					"WS",
+					"ST",
+					"SN",
+					"MP",
+					"PN",
+					"SX",
+					"SB",
+					"SO",
+					"SC",
+					"SL",
+					"GS",
+					"SH",
+					"KN",
+					"LC",
+					"PM",
+					"VC",
+					"TJ",
+					"TZ",
+					"TG",
+					"TK",
+					"TO",
+					"TM",
+					"TC",
+					"TV",
+					"UM",
+					"UG",
+					"VI",
+					"VG",
+					"WF",
+					"EH",
+					"ZM",
+					"ZW",
+					"UZ",
+					"VU",
+					"SR",
+					"SZ",
+					"AD",
+					"MC",
+					"SM",
+					"ME",
+					"VA",
+					"NEUTRAL"
+				]
+			},
+			"minItems": 1,
+			"additionalItems": false,
+			"uniqueItems": true
+		},
+		"language": {
+			"description": "The language to use when fetching game properties. Properties such as the game description will be in this language.",
+			"type": "string",
+			"default": "en-us",
+			"enum": [
+				"es-ar",
+				"pt-br",
+				"en-ca",
+				"fr-ca",
+				"es-cl",
+				"es-co",
+				"es-mx",
+				"en-us",
+				"nl-be",
+				"fr-be",
+				"cs-cz",
+				"da-dk",
+				"de-de",
+				"es-es",
+				"fr-fr",
+				"en-ie",
+				"it-it",
+				"hu-hu",
+				"nl-nl",
+				"nb-no",
+				"de-at",
+				"pl-pl",
+				"pt-pt",
+				"de-ch",
+				"sk-sk",
+				"fr-ch",
+				"fi-fi",
+				"sv-se",
+				"en-gb",
+				"el-gr",
+				"ru-ru",
+				"en-au",
+				"en-hk",
+				"en-in",
+				"id-id",
+				"en-my",
+				"en-nz",
+				"en-ph",
+				"en-sg",
+				"vi-vn",
+				"th-th",
+				"ko-kr",
+				"zh-cn",
+				"zh-tw",
+				"ja-jp",
+				"zh-hk",
+				"en-za",
+				"tr-tr",
+				"he-il",
+				"ar-ae",
+				"ar-sa"
+			]
+		},
+		"platformsToFetch": {
+			"description": "Which platforms to fetch games for, any of \"console\", \"pc\" and \"eaPlay\".",
+			"type": "array",
+			"default": [
+				"console",
+				"pc",
+				"eaPlay"
+			],
+			"items": {
+				"type": "string",
+				"enum": [
+					"console",
+					"pc",
+					"eaPlay"
+				]
+			},
+			"minItems": 1,
+			"additionalItems": false,
+			"uniqueItems": true
+		},
+		"outputFormat": {
+			"description": "What kind of format the resulting JSON should use for the cleaned game properties.",
+			"type": "string",
+			"default": "array",
+			"oneOf": [
+				{
+					"const": "array",
+					"title": "The resulting data structure is an array with its entries being dictionaries holding separate game's proeprties."
+				},
+				{
+					"const": "productTitle",
+					"title": "The resulting data structure is a dictionary that uses games' title as keys."
+				},
+				{
+					"const": "productId",
+					"title": "The resulting data structure is a dictionary that uses games' product ID's as keys."
+				},
+				{
+					"const": "0-indexed",
+					"title": "The resulting data structure is a dictionary that uses rolling integers as keys."
+				}
+			]
+		},
+		"treatEmptyStringsAsNull": {
+			"description": "Whether to treat empty strings as null values.",
+			"type": "boolean",
+			"default": true
+		},
+		"keepCompleteProperties": {
+			"description": "Whether to keep the original, complete list of properties for the fetched games. Will be saved in a separate file per platform and market.",
+			"type": "boolean",
+			"default": false
+		},
+		"includedProperties": {
+			"description": "The properties that should be contained in the filtered version of the API response.",
+			"type": "object",
+			"properties": {
+				"productTitle": {
+					"description": "Whether to include the title of the game.",
+					"type": "boolean",
+					"default": true
+				},
+				"productId": {
+					"description": "Whether to include the product ID of the game.",
+					"type": "boolean",
+					"default": false
+				},
+				"developerName": {
+					"description": "Whether to include the name of the game's developer.",
+					"type": "boolean",
+					"default": false
+				},
+				"publisherName": {
+					"description": "Whether to include the name of the game's publisher.",
+					"type": "boolean",
+					"default": false
+				},
+				"categories": {
+					"description": "Whether to include the game's categories.",
+					"type": "boolean",
+					"default": false
+				},
+				"productDescription": {
+					"description": "Whether to include the description of the game.",
+					"type": "object",
+					"default": {
+						"enabled": false,
+						"preferShort": false
+					},
+					"properties": {
+						"enabled": {
+							"description": "Whether to include the description of the game.",
+							"type": "boolean",
+							"default": false
+						},
+						"preferShort": {
+							"description": "Whether to prefer the short description of the game over the long description, if one exists.",
+							"type": "boolean",
+							"default": false
+						}
+					},
+					"required": [
+						"enabled"
+					],
+					"additionalProperties": false
+				},
+				"images": {
+					"description": "Whether to include image URL's for the game.",
+					"type": "object",
+					"default": {
+						"enabled": false,
+						"imageTypes": {
+							"TitledHeroArt": -1,
+							"SuperHeroArt": -1,
+							"Logo": -1,
+							"Poster": -1,
+							"Screenshot": -1,
+							"BoxArt": -1,
+							"Hero": -1,
+							"BrandedKeyArt": -1,
+							"FeaturePromotionalSquareArt": -1
+						}
+					},
+					"properties": {
+						"enabled": {
+							"description": "Whether to include image URL's for the game.",
+							"type": "boolean",
+							"default": false
+						},
+						"imageTypes": {
+							"description": "What kinds of images should be included in the output, and a maximum of how many of each type should be chosen.",
+							"type": "object",
+							"default": {
+								"TitledHeroArt": -1,
+								"SuperHeroArt": -1,
+								"Logo": -1,
+								"Poster": -1,
+								"Screenshot": -1,
+								"BoxArt": -1,
+								"Hero": -1,
+								"BrandedKeyArt": -1,
+								"FeaturePromotionalSquareArt": -1
+							},
+							"properties": {
+								"Screenshot": {
+									"description": "In-game screenshots. 16:9 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.4677.68326442227858632.03782b23-7f26-4a8e-ba87-177bdf2c3c90.4344f692-1744-4c18-8024-270fd320f63c",
+									"type": "integer",
+									"default": -1
+								},
+								"TitledHeroArt": {
+									"description": "Banner featuring the game's name. 16:9 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.12688.68326442227858632.03782b23-7f26-4a8e-ba87-177bdf2c3c90.ef4d4f2f-1865-4fa7-8ec7-8b914cd4dcc0",
+									"type": "integer",
+									"default": -1
+								},
+								"Poster": {
+									"description": "Banner featuring the game's name in portrait mode, such as for smartphones. 2:3 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.64810.68326442227858632.03782b23-7f26-4a8e-ba87-177bdf2c3c90.fdefe49f-270c-44e5-b660-6d7764b37f0f",
+									"type": "integer",
+									"default": -1
+								},
+								"SuperHeroArt": {
+									"description": "Artwork without text. 16:9 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.62159.68326442227858632.03782b23-7f26-4a8e-ba87-177bdf2c3c90.1405eb3a-6314-4e44-a822-7660d70a6ec5",
+									"type": "integer",
+									"default": -1
+								},
+								"Hero": {
+									"description": "Artwork without text. 2:1 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.28129.13672427983916579.274b1ffd-9cde-4bef-9a3e-6f37073d5ed0.5eb8b4f3-3575-4d13-b0a4-b60d6c64f392",
+									"type": "integer",
+									"default": -1
+								},
+								"BoxArt": {
+									"description": "Banner featuring the game's logo and name in a square \"box\" format. 1:1 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.4794.68326442227858632.03782b23-7f26-4a8e-ba87-177bdf2c3c90.b156af1e-9796-48af-8d11-3461727280ea",
+									"type": "integer",
+									"default": -1
+								},
+								"BrandedKeyArt": {
+									"description": "Banner featuring the game's name with an \"XBOX\" logo on top. 73:100 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.27624.68326442227858632.21f49c7b-79d7-4647-b847-ecc7a34a7901.1aa31c66-2a52-45d6-8fed-badfb9f25ac6",
+									"type": "integer",
+									"default": -1
+								},
+								"FeaturePromotionalSquareArt": {
+									"description": "Banner featuring the game's logo (without name) in a square \"box\" format. 1:1 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.29819.68326442227858632.03782b23-7f26-4a8e-ba87-177bdf2c3c90.322d4aa6-0a23-4565-a64f-743f0620a96e",
+									"type": "integer",
+									"default": -1
+								},
+								"Logo": {
+									"description": "Small, square game logo, to be used e.g. as a game library icon. 1:1 aspect ratio. E.g. https://store-images.s-microsoft.com/image/apps.65119.13664397958929388.0e87ac81-8aa3-41f0-82dc-61a295fc5fe3.44bf032a-b113-4179-aa1b-f557dbcd3b19",
+									"type": "integer",
+									"default": -1
+								}
+							},
+							"additionalProperties": false,
+							"minProperties": 1
+						}
+					},
+					"required": [
+						"enabled",
+						"imageTypes"
+					],
+					"additionalProperties": false
+				},
+				"releaseDate": {
+					"description": "Whether to include the game's release date.",
+					"type": "object",
+					"default": {
+						"enabled": false,
+						"format": "date"
+					},
+					"properties": {
+						"enabled": {
+							"description": "Whether to include the game's release date.",
+							"type": "boolean",
+							"default": false
+						},
+						"format": {
+							"description": "How to format the date string. Either the full dateTime (YYYY-MM-DDTHH:mm:ss.sssssssZ) or just the date (YYYY-MM-DD).",
+							"type": "string",
+							"default": "date",
+							"enum": [
+								"date",
+								"dateTime"
+							]
+						}
+					},
+					"required": [
+						"enabled",
+						"format"
+					],
+					"additionalProperties": false
+				},
+				"userRating": {
+					"description": "Whether to include the game's user rating.",
+					"type": "object",
+					"default": {
+						"enabled": false,
+						"aggregationInterval": "AllTime",
+						"format": "percentage"
+					},
+					"properties": {
+						"enabled": {
+							"description": "Whether to include the game's user rating.",
+							"type": "boolean",
+							"default": false
+						},
+						"aggregationInterval": {
+							"description": "Which kind of interval to use for rating aggregation.",
+							"type": "string",
+							"default": "AllTime",
+							"enum": [
+								"AllTime",
+								"30Days",
+								"7Days"
+							]
+						},
+						"format": {
+							"description": "How to format the rating. Either as the original x-out-of-5 stars value (0.0 - 5.0) or as a percentage (0.0 - 1.0).",
+							"type": "string",
+							"default": "percentage",
+							"enum": [
+								"percentage",
+								"stars"
+							]
+						}
+					},
+					"required": [
+						"enabled",
+						"aggregationInterval",
+						"format"
+					],
+					"additionalProperties": false
+				},
+				"pricing": {
+					"description": "Whether to include the game's price information. The currency that is used is dependent on the chosen \"market\".",
+					"type": "object",
+					"default": {
+						"enabled": false,
+						"priceTypes": [
+							"ListPrice",
+							"MSRP",
+							"WholesalePrice"
+						],
+						"missingPricePolicy": "useZero"
+					},
+					"properties": {
+						"enabled": {
+							"description": "Whether or not to include the game's price information. The currency that is used is dependent on the chosen \"market\".",
+							"type": "boolean",
+							"default": false
+						},
+						"priceTypes": {
+							"description": "Which kinds of prices to include. Choose from \"ListPrice\", \"MSRP\" and \"WholesalePrice\" (i.e. with discounts applied).",
+							"type": "array",
+							"default": [
+								"ListPrice",
+								"MSRP",
+								"WholesalePrice"
+							],
+							"items": {
+								"type": "string",
+								"anyOf": [
+									{
+										"const": "ListPrice",
+										"title": "The current listing price in the store."
+									},
+									{
+										"const": "MSRP",
+										"title": "The manufacturer's suggested retail price."
+									},
+									{
+										"const": "WholesalePrice",
+										"title": "The wholesale price, i.e. the ListPrice after sales have been applied."
+									}
+								]
+							},
+							"minItems": 1,
+							"additionalProperties": false,
+							"uniqueItems": true
+						},
+						"missingPricePolicy": {
+							"description": "What to do if a price is missing. Either \"useZero\", \"useNull\" or \"useEmptyString\".",
+							"type": "string",
+							"default": "useNull",
+							"enum": [
+								"useZero",
+								"useNull",
+								"useEmptyString"
+							]
+						}
+					},
+					"required": [
+						"enabled",
+						"priceTypes",
+						"missingPricePolicy"
+					],
+					"additionalProperties": false
+				},
+				"storePage": {
+					"description": "Whether to include the game's store page URL. Note that this is not guaranteed to always result in a working URL, as it needs to be inferred and is not available through the API.",
+					"type": "boolean",
+					"default": false
+				}
+			},
+			"additionalProperties": false,
+			"minProperties": 1
+		}
+	},
+	"required": [
+		"markets",
+		"language",
+		"platformsToFetch",
+		"outputFormat",
+		"includedProperties"
+	],
+	"additionalProperties": false
+}

@@ -1,0 +1,6 @@
+.env
+data/previous.json
+output/
+node_modules/
+*.log
+

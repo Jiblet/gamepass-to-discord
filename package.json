@@ -1,0 +1,27 @@
+{
+  "name": "gamepass-to-discord",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Tracks Xbox Game Pass title changes and posts formatted embeds to Discord via webhook.",
+  "main": "index.js",
+  "scripts": {
+    "start": "bash run.sh",
+    "simulate": "bash simulate-test.sh"
+  },
+  "author": "Jiblet",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "latest",
+    "https": "latest",
+    "jq": "latest"
+  },
+  "keywords": [
+    "xbox",
+    "gamepass",
+    "discord",
+    "webhook",
+    "tracker",
+    "automation"
+  ]
+}
+
