@@ -1,4 +1,8 @@
 #!/bin/bash
+cd "$(dirname "$0")"
+
+echo "▶️ Game Pass to Discord started at $(date)"
+
 # 🌐 Load webhook from .env
 if [ -f .env ]; then
   source .env
@@ -9,7 +13,12 @@ fi
 
 # 🔁 Refresh latest game list
 node index.js
+if [ $? -ne 0 ]; then
+  echo "❌ index.js failed"
+  exit 1
+fi
 
+# 📦 Merge output files
 jq -s 'add' \
   output/formattedGameProperties_pc_GB.json \
   output/formattedGameProperties_eaPlay_GB.json \
@@ -17,23 +26,28 @@ jq -s 'add' \
 
 # 🧠 Diff and build embeds
 EMBEDS=$(node tracker.js)
+if [ $? -ne 0 ]; then
+  echo "❌ tracker.js failed"
+  exit 1
+fi
 
-# 📨 Post to Discord
-if [ "$EMBEDS" != "[]" ]; then
+# 📨 Post to Discord if needed
+if [ "$EMBEDS" != "[]" ] && [ -n "$EMBEDS" ]; then
+  echo "✅ New titles found — preparing Discord embeds"
   echo "$EMBEDS" | jq -c '.[]' | split -l 10 - tmp_embed_
 
   for f in tmp_embed_*; do
     batch=$(jq -s '.' "$f")
-    curl -H "Content-Type: application/json" \
+    curl -s -H "Content-Type: application/json" \
          -X POST \
          -d "{\"embeds\": $batch}" \
          "$DISCORD_WEBHOOK_URL"
+    echo "📤 Posted batch: $f"
     rm "$f"
   done
 else
-  curl -H "Content-Type: application/json" \
-       -X POST \
-       -d "{\"content\": \"✅ No changes in Game Pass titles.\"}" \
-       "$DISCORD_WEBHOOK_URL"
+  echo "ℹ️ No changes detected this hour"
 fi
+
+echo "✅ Run finished at $(date)"
 

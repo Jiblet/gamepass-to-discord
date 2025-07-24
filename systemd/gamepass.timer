@@ -1,0 +1,24 @@
+# ⚠️  Note to self:
+# Avoid restarting this timer between scheduled ticks unless you're okay with an immediate service run.
+
+# If you want to change the schedule without triggering the service, use:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable gamepass.timer
+#   sudo systemctl start gamepass.timer
+# This ensures the timer activates but waits for the next OnCalendar event.
+
+[Unit]
+Description=Run gamepass-to-discord hourly
+
+[Timer]
+OnCalendar=hourly
+#Persistent=true
+# 🕰️ About Persistent=true:
+# If this line is present, systemd will "catch up" missed runs after downtime or restarts.
+# For example, if the last hourly tick was 08:00 and the system boots at 08:23,
+# it will immediately run the service to compensate for the missed 08:00 trigger.
+# Removing this line disables that behavior — future runs will only happen at the next scheduled tick.
+
+[Install]
+WantedBy=timers.target
+

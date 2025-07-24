@@ -1,0 +1,8 @@
+[Unit]
+Description=Gamepass to Discord notifier
+
+[Service]
+WorkingDirectory=/home/jiblet/code/gamepass-to-discord
+Type=oneshot
+ExecStart=/home/jiblet/code/gamepass-to-discord/run.sh
+
