@@ -5,24 +5,19 @@ Monitors Xbox Game Pass title changes and posts updates straight to Discord usin
 ## Setup
 
 Run the install:
+`npm install`
 
-npm install
-
-Then drop a `.env` in the root:
-
-DISCORD_WEBHOOK_URL="your-discord-webhook-url"
+Then drop a `.env` in the root containing your webhook URL: `DISCORD_WEBHOOK_URL="your-discord-webhook-url"`
 
 ## Usage
 
 Run the pipeline:
-
-./run.sh
+`./run.sh`
 
 ## Testing
 
 Inject a fake change for sanity check:
-
-./simulate-test.sh
+`./simulate-test.sh`
 
 ## Structure
 
