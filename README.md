@@ -26,14 +26,15 @@ Inject a fake change for sanity check:
 
 ## Structure
 
-run.sh              → master script, formats + posts
-simulate-test.sh    → spoof a game add/remove
-index.js            → pulls current game list
-tracker.js          → diffs and formats Discord embeds
-config.json         → tweak output rules + images
-data/previous.json  → cached list
-output/latest.json  → fresh list
-.env                → webhook token (ignored from Git)
+- `run.sh`: master script, formats + posts  
+- `simulate-test.sh`: spoof a game add/remove  
+- `index.js`: pulls current game list  
+- `tracker.js`: diffs and formats Discord embeds  
+- `config.json`: tweak output rules + images  
+- `data/previous.json`: cached list  
+- `output/latest.json`: fresh list  
+- `.env`: webhook token (ignored from Git)
+
 
 ## Notes
 
